@@ -381,6 +381,21 @@ for(int Y = 0; Y < Matrix7.GetLength(0); Y += 1)
     }
 }
 
+for(int i = 0; i < Matrix7.GetLength(0); i += 1)
+{
+    for(int j = 0; j < Matrix7.GetLength(1); j += 1)
+    {
+        if(j == Matrix7.GetLength(1) - 1)
+        {
+            Console.WriteLine($"{Matrix7[i, j]}");
+        }
+        else
+        {
+            Console.Write($"{Matrix7[i, j]} ");
+        }
+    }
+}
+
 if(NumPosX.Count != 0)
 {
     Console.Write($"O número desejado ({Num}) foi encontrado na matriz, nas posições ");
