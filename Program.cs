@@ -44,7 +44,7 @@ for(int i = 0; i < Matrix.GetLength(0); i += 1)
     }
 }
 
- float EvenAver = EvenSum / EvenCount;
+float EvenAver = EvenSum / EvenCount;
 
 Console.WriteLine($"Desses números, {EvenCount} são pares, sua soma é {EvenSum}, e sua média, {EvenAver}");
 
@@ -285,11 +285,11 @@ for(int i = 0; i < Matrix4D.GetLength(0); i += 1)
 
 var Matrix6 = new int[6, 6];
 
-var BigNum = new int[0];
+var BigNum = new List<int>();
 
-var BigPosX = new int[0];
+var BigPosX = new List<int>();
 
-var BigPosY = new int[0];
+var BigPosY = new List<int>();
 
 for(int Y = 0; Y < Matrix6.GetLength(0); Y += 1)
 {
@@ -308,11 +308,11 @@ for(int Y = 0; Y < Matrix6.GetLength(0); Y += 1)
 
         if(Matrix6[Y, X] > 10)
         {
-            BigNum = BigNum.Append(Matrix[Y, X]).ToArray();
+            BigNum.Add(Matrix6[Y, X]);
             
-            BigPosX = BigPosX.Append(X).ToArray();
+            BigPosX.Add(X);
 
-            BigPosY = BigPosY.Append(Y).ToArray();
+            BigPosY.Add(Y);
         }
     }
 }
@@ -334,20 +334,20 @@ for(int i = 0; i < Matrix6.GetLength(0); i += 1)
     }
 }
 
-if(BigNum.Length > 0)
+if(BigNum.Count > 0)
 {
-    Console.Write($"Nessa matrix, {BigNum.Length} números são maiores que 10. Sendo eles ");
+    Console.WriteLine($"Nessa matrix, {BigNum.Count} números são maiores que 10. Sendo eles: ");
 }
 
-for(int i = 0; i < BigNum.Length; i += 1)
+for(int i = 0; i < BigNum.Count; i += 1)
 {
-    if(i == BigNum.Length - 1)
+    if(i == BigNum.Count - 1)
     {
         Console.WriteLine($"e {BigNum[i]}, na posição {BigPosX[i]}, {BigPosY[i]}.");
     }
     else
     {
-        Console.WriteLine($"{BigNum[i]}, na posição {BigPosX[i]}, {BigPosY[i]}, ");
+        Console.WriteLine($"{BigNum[i]}, na posição {BigPosX[i]}, {BigPosY[i]}; ");
     }
 }
 
@@ -362,32 +362,32 @@ var Matrix7 = new int[3, 4];
 
 var Num = 4;
 
-var NumPosX = new int[0];
+var NumPosX = new List<int>();
 
-var NumPosY = new int[0];
+var NumPosY = new List<int>();
 
 for(int Y = 0; Y < Matrix7.GetLength(0); Y += 1)
 {
-    for(int X = 0; X < Matrix.GetLength(1); X += 1)
+    for(int X = 0; X < Matrix7.GetLength(1); X += 1)
     {
-        Matrix[Y, X] = X + Y;
+        Matrix7[Y, X] = X + Y;
 
-        if(Matrix[Y, X] == Num)
+        if(Matrix7[Y, X] == Num)
         {
-            NumPosX = NumPosX.Append(X).ToArray();
+            NumPosX.Add(X);
 
-            NumPosY = NumPosY.Append(Y).ToArray();
+            NumPosY.Add(Y);
         }
     }
 }
 
-if(NumPosX.Length != 0)
+if(NumPosX.Count != 0)
 {
     Console.Write($"O número desejado ({Num}) foi encontrado na matriz, nas posições ");
 
-    for(int i = 0; i < NumPosX.Length; i += 1)
+    for(int i = 0; i < NumPosX.Count; i += 1)
     {
-        if(i == NumPosX.Length - 1)
+        if(i == NumPosX.Count - 1)
         {
             Console.WriteLine($"e {NumPosX[i]}, {NumPosY[i]}.");
         }
@@ -400,4 +400,121 @@ if(NumPosX.Length != 0)
 else
 {
     Console.WriteLine($"O número desejado ({Num}) não foi encontrado na matriz!");
+}
+
+/*
+8.	 Leia uma matriz 5 x 2 e escreva a localização (linha e a coluna) do maior valor. 
+*/
+
+var Matrix8 = new int[2, 5];
+
+var BiggestNum = 0;
+
+var BiggestPosX = 0;
+
+var BiggestPosY = 0;
+
+
+
+for(int Y = 0; Y < Matrix8.GetLength(0); Y += 1)
+{
+    for(int X = 0; X < Matrix8.GetLength(1); X += 1)
+    {
+        Matrix8[Y, X] = X + Y;
+
+        if(X > 0 || Y > 0)
+        {
+            if(Matrix8[Y, X] > BiggestNum)
+            {
+                BiggestNum = Matrix8[Y, X];
+
+                BiggestPosX = X;
+
+                BiggestPosY = Y;
+            }
+        }
+        else
+        {
+            BiggestNum = Matrix8[Y, X];
+
+            BiggestPosX = 0;
+            
+            BiggestPosY = 0;
+        }
+    }
+}
+
+for(int i = 0; i < Matrix8.GetLength(0); i += 1)
+{
+    for(int j = 0; j < Matrix8.GetLength(1); j += 1)
+    {
+        if(j == Matrix8.GetLength(1) - 1)
+        {
+            Console.WriteLine(Matrix8[i, j]);
+        }
+        else
+        {
+            Console.Write($"{Matrix8[i, j]} ");
+        }
+    }
+}
+
+Console.WriteLine($"Da matriz criada, o maior número é {BiggestNum}, localizado na posição {BiggestPosX}, {BiggestPosY}");
+
+/*
+11.	Escreva um programa que lê uma matriz M[1..5, 1..5]. Substitua, a seguir, todos os
+valores negativos da matriz pelo seu módulo. Exemplo: substitua -2 por 2, -16 por 16, assim por diante. 
+*/
+
+var Matrix11 = new int[5, 5];
+
+for(int Y = 0; Y < Matrix11.GetLength(0); Y += 1)
+{
+    for(int X = 0; X < Matrix11.GetLength(1); X += 1)
+    {
+        Matrix11[Y, X] = X - Y;
+    }
+}
+
+for(int i = 0; i < Matrix11.GetLength(0); i += 1)
+{
+    for(int j = 0; j < Matrix11.GetLength(1); j += 1)
+    {
+        if(j == Matrix11.GetLength(1) - 1)
+        {
+            Console.WriteLine($"{Matrix11[i, j]}");
+        }
+        else
+        {
+            Console.Write($"{Matrix11[i, j]} ");
+        }
+    }
+}
+
+Console.WriteLine("Convertendo números negativos...");
+
+for(int i = 0; i < Matrix11.GetLength(0); i += 1)
+{
+    for(int j = 0; j < Matrix11.GetLength(1); j += 1)
+    {
+        if(Matrix11[i, j] < 0)
+        {
+            Matrix11[i, j] = Matrix11[i, j] * (- 1);
+        }
+    }
+}
+
+for(int i = 0; i < Matrix11.GetLength(0); i += 1)
+{
+    for(int j = 0; j < Matrix11.GetLength(1); j += 1)
+    {
+        if(j == Matrix11.GetLength(1) - 1)
+        {
+            Console.WriteLine($"{Matrix11[i, j]}");
+        }
+        else
+        {
+            Console.Write($"{Matrix11[i, j]} ");
+        }
+    }
 }
