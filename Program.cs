@@ -4,8 +4,6 @@
 escrever todo o conteúdo da mesma. 
 */
 
-using System.Security.Cryptography.X509Certificates;
-
 var Matrix = new int[5, 6];
 
 var EvenSum = 0;
@@ -44,9 +42,11 @@ for(int i = 0; i < Matrix.GetLength(0); i += 1)
     }
 }
 
-float EvenAver = EvenSum / EvenCount;
+float EvenAver = EvenSum / (float)EvenCount;
 
 Console.WriteLine($"Desses números, {EvenCount} são pares, sua soma é {EvenSum}, e sua média, {EvenAver}");
+
+Console.ReadKey();
 
 /*
 Escrever um programa para ler uma matriz qualquer [1..7, 1..4] contendo valores inteiros
@@ -57,32 +57,30 @@ var Matrix2 = new int[7, 4];
 
 int SmallestNum = 0;
 
-var SmallPos = new int[2];
+var SmallPos = new int[2]{0, 0};
+
+var random = new Random();
 
 for(int Y = 0; Y < Matrix2.GetLength(0); Y += 1)
 {
     for(int X = 0; X < Matrix2.GetLength(1); X += 1)
     {
-        Matrix2[Y, X] = X + Y;
+        Matrix2[Y, X] = random.Next(100);
 
-        if(X == 0 && Y == 0)
+        if(Y == 0 && X == 0)
         {
-            SmallestNum = Matrix2[Y, X] ;
-            
-            SmallPos[1] = Y;
+            SmallestNum = Matrix2[Y, X];
 
-            SmallPos[0] = X;
+            continue;
         }
-        else
+
+        if(Matrix2[Y, X] <= SmallestNum)
         {
-            if(Matrix2[Y, X] < SmallestNum)
-            {
-                SmallestNum = Matrix2[Y, X];
+            SmallestNum = Matrix2[Y, X];
 
-                SmallPos[1] = Y;
+            SmallPos[0] = Y;
 
-                SmallPos[0] = X;
-            }
+            SmallPos[1] = X;
         }
     }
 }
@@ -93,16 +91,18 @@ for(int i = 0; i < Matrix2.GetLength(0); i += 1)
     {
         if(j == Matrix2.GetLength(1) - 1)
         {
-            Console.WriteLine(Matrix2[i, j]);
+            Console.WriteLine($"{Matrix2[i, j]}");
         }
         else
         {
-            Console.Write(Matrix2[i, j]);
+            Console.Write($"{Matrix2[i, j]} ");
         }
     }
 }
 
 Console.WriteLine($"Da matriz feita, o menor número é {SmallestNum}, na posição {SmallPos[0]},{SmallPos[1]}");
+
+Console.ReadKey();
 
 /*
 4.	 Escrever um programa que lê uma matriz M[1..5, 1..5] e cria 2 vetores SL(5), SC(5) que
@@ -120,7 +120,7 @@ for(int Y = 0; Y < Matrix3.GetLength(0); Y += 1)
 {
     for(int X = 0; X < Matrix3.GetLength(1); X += 1)
     {
-        Matrix3[Y, X] = X + Y;
+        Matrix3[Y, X] = random.Next(25);
 
         SL[Y] += Matrix3[Y, X];
 
@@ -140,7 +140,7 @@ for(int i = 0; i < Matrix3.GetLength(0); i += 1)
         }
         else
         {
-            Console.Write(Matrix3[i, j]);
+            Console.Write(Matrix3[i, j] + " ");
         }
     }
 }
@@ -174,6 +174,8 @@ for(int i = 0; i < SC.Length; i += 1)
         Console.Write($"{SC[i]}, ");
     }
 }
+
+Console.ReadKey();
 
 /*
 Escrever um programa que lê duas matrizes N1[1..4, 1..6] e N2[1..4, 1..6] e cria: 
@@ -224,7 +226,7 @@ for(int i = 0; i < Matrix4A.GetLength(0); i += 1)
         }
         else
         {
-            Console.Write(Matrix4A[i, j]);
+            Console.Write(Matrix4A[i, j] + " ");
         }
     }
 }
@@ -241,7 +243,7 @@ for(int i = 0; i < Matrix4B.GetLength(0); i += 1)
         }
         else
         {
-            Console.Write(Matrix4B[i, j]);
+            Console.Write(Matrix4B[i, j] + " ");
         }
     }
 }
@@ -257,7 +259,7 @@ for(int i = 0; i < Matrix4C.GetLength(0); i += 1)
         }
         else
         {
-            Console.Write(Matrix4C[i, j]);
+            Console.Write(Matrix4C[i, j] + " ");
         }
     }
 }
@@ -274,10 +276,12 @@ for(int i = 0; i < Matrix4D.GetLength(0); i += 1)
         }
         else
         {
-            Console.Write(Matrix4D[i, j]);
+            Console.Write(Matrix4D[i, j] + " ");
         }
     }
 }
+
+Console.ReadKey();
 
 /*
 6.	 Leia uma matriz 6 x 6, conte e escreva quantos valores maiores que 10 ela possui. 
@@ -329,7 +333,7 @@ for(int i = 0; i < Matrix6.GetLength(0); i += 1)
         }
         else
         {
-            Console.Write(Matrix6[i, j]);
+            Console.Write(Matrix6[i, j] + " ");
         }
     }
 }
@@ -351,6 +355,8 @@ for(int i = 0; i < BigNum.Count; i += 1)
     }
 }
 
+Console.ReadKey();
+
 /*
 7. Leia uma matriz 4 x 3. Leia também um valor X. O programa deverá fazer uma busca desse
 valor na matriz e, ao final escrever a localização (linha e coluna) ou uma mensagem de “não
@@ -370,7 +376,7 @@ for(int Y = 0; Y < Matrix7.GetLength(0); Y += 1)
 {
     for(int X = 0; X < Matrix7.GetLength(1); X += 1)
     {
-        Matrix7[Y, X] = X + Y;
+        Matrix7[Y, X] = random.Next(10);
 
         if(Matrix7[Y, X] == Num)
         {
@@ -380,6 +386,7 @@ for(int Y = 0; Y < Matrix7.GetLength(0); Y += 1)
         }
     }
 }
+
 
 for(int i = 0; i < Matrix7.GetLength(0); i += 1)
 {
@@ -416,6 +423,8 @@ else
 {
     Console.WriteLine($"O número desejado ({Num}) não foi encontrado na matriz!");
 }
+
+Console.ReadKey();
 
 /*
 8.	 Leia uma matriz 5 x 2 e escreva a localização (linha e a coluna) do maior valor. 
@@ -475,6 +484,8 @@ for(int i = 0; i < Matrix8.GetLength(0); i += 1)
 }
 
 Console.WriteLine($"Da matriz criada, o maior número é {BiggestNum}, localizado na posição {BiggestPosX}, {BiggestPosY}");
+
+Console.ReadKey();
 
 /*
 11.	Escreva um programa que lê uma matriz M[1..5, 1..5]. Substitua, a seguir, todos os
