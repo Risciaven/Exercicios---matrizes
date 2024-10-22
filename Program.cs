@@ -1,4 +1,4 @@
-﻿/*
+/*
 2.	 Escrever um programa para armazenar valores inteiros em uma matriz qualquer
 [1..5, 1..6]. A seguir, calcular a média dos valores pares contidos na matriz e
 escrever todo o conteúdo da mesma. 
@@ -403,25 +403,38 @@ for(int i = 0; i < Matrix7.GetLength(0); i += 1)
     }
 }
 
-if(NumPosX.Count != 0)
-{
-    Console.Write($"O número desejado ({Num}) foi encontrado na matriz, nas posições ");
+var question = "Please type a number for me to fetch (or type anything below 0 to stop)";
 
-    for(int i = 0; i < NumPosX.Count; i += 1)
+Console.WriteLine(question);
+
+var input = Console.ReadLine();
+Num = int.Parse(input);
+
+while (Num > 0)
+{
+    var found = false;
+
+    for (var i = 0; i < Matrix7.GetLength(0); i++)
     {
-        if(i == NumPosX.Count - 1)
-        {
-            Console.WriteLine($"e {NumPosX[i]}, {NumPosY[i]}.");
+        for (var j = 0; j < Matrix7.GetLength(1); j++)
+    {
+            if (Matrix7[i, j] == Num)
+            {
+                found = true;
+                Console.WriteLine($"Num Found on coordinates [{i}, {j}]");
         }
-        else
-        {
-            Console.Write($"{NumPosX[i]}, {NumPosY[i]}; ");
         }
     }
-}
-else
-{
-    Console.WriteLine($"O número desejado ({Num}) não foi encontrado na matriz!");
+
+    // if statements always wants a true
+    if (!found)
+        // if code got in here, the condition above was true, but for that, found must be false
+        Console.WriteLine($"Number {Num} is not on the Matrix. Try again!\n");
+
+    Console.WriteLine(question);
+
+    input = Console.ReadLine();
+    Num = int.Parse(input);
 }
 
 Console.ReadKey();
